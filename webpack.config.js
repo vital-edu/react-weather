@@ -1,3 +1,5 @@
+const Dotenv = require('dotenv-webpack');
+
 module.exports = {
   entry: './app/app.jsx',
   output: {
@@ -11,6 +13,7 @@ module.exports = {
       Examples: 'app/components/Examples.jsx',
       Main: 'app/components/Main.jsx',
       Nav: 'app/components/Nav.jsx',
+      openWeatherMap: 'app/api/openWeatherMap.jsx',
       Weather: 'app/components/Weather.jsx',
       WeatherForm: 'app/components/WeatherForm.jsx',
       WeatherMessage: 'app/components/WeatherMessage.jsx',
@@ -27,4 +30,9 @@ module.exports = {
       exclude: /(node_modules|bower_components)/,
     }],
   },
+  plugins: [
+    new Dotenv({
+      path: './.env',
+    })
+  ],
 };
