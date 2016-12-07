@@ -47,7 +47,7 @@ jspm_packages
 .yarn-integrity
 
 # Webpack generated files
-public/bundle.js
+# public/bundle.js
 
 # Environment variables
 .env

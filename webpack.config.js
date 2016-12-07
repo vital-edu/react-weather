@@ -33,6 +33,7 @@ module.exports = {
   plugins: [
     new Dotenv({
       path: './.env',
+      systemvars: true,
     })
   ],
   devtool: 'cheap-module-eval-source-map',
