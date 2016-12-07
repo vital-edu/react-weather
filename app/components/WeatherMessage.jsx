@@ -1,10 +1,9 @@
 import React from 'react';
 
-export default class WeatherMessage extends React.Component {
-  render() {
-    var {location, temp} = this.props;
-    return (
-      <h3>It's {temp} in {location}.</h3>
-    )
-  }
+function WeatherMessage ({temp, location}) {
+  return (
+    <h3>It's {temp} in {location}.</h3>
+  )
 }
+
+module.exports = WeatherMessage;
