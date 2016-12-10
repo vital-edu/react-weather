@@ -1,7 +1,15 @@
-const Dotenv = require('dotenv-webpack');
+const dotenv = require('dotenv-webpack');
+const webpack = require('webpack');
 
 module.exports = {
-  entry: './app/app.jsx',
+  entry: [
+    'script!jquery/dist/jquery.min.js',
+    'script!foundation-sites/dist/js/foundation.min.js',
+    './app/app.jsx'
+  ],
+  externals: {
+    jquery: 'jQuery'
+  },
   output: {
     path: __dirname,
     filename: './public/bundle.js',
@@ -31,9 +39,13 @@ module.exports = {
     }],
   },
   plugins: [
-    new Dotenv({
+    new dotenv({
       path: './.env',
       systemvars: true,
+    }),
+    new webpack.ProvidePlugin({
+      '$': 'jquery',
+      'jQuery': 'jquery'
     })
   ],
   devtool: 'cheap-module-eval-source-map',

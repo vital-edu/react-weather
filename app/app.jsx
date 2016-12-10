@@ -1,3 +1,5 @@
+import 'style!css!foundation-sites/dist/css/foundation.min.css';
+
 import {
   IndexRoute,
   Route,
@@ -11,6 +13,8 @@ import Main from 'Main';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Weather from 'Weather';
+
+$(document).foundation();
 
 ReactDOM.render(
   <Router history={hashHistory}>
