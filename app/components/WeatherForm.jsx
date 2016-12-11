@@ -15,14 +15,9 @@ export default class WeatherForm extends React.Component {
   render() {
     return (
       <div>
-        <h1>Get Weather</h1>
         <form onSubmit={(e) => this.onFormSubmit(e)}>
-          <div>
-            <input ref="location" type="text" placeholder="Enter city name"></input>
-          </div>
-          <div>
-            <button>Get Weather</button>
-          </div>
+          <input ref="location" type="text" placeholder="Enter city name" label="city name to fetch"></input>
+          <button className="button expanded hollow">Get Weather</button>
         </form>
       </div>
     );

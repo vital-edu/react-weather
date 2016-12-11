@@ -35,7 +35,7 @@ export default class Weather extends React.Component {
 
     function renderMessage() {
       if (isLoading) {
-        return <h3>Fetching weather...</h3>;
+        return <p className="text-center">Fetching weather...</p>;
       } else if (temp && location) {
         return <WeatherMessage temp={temp} location={location}/>;
       }
@@ -43,7 +43,7 @@ export default class Weather extends React.Component {
 
     return (
       <div>
-        <h3>Weather Component</h3>
+        <h1 className="text-center">Get Weather</h1>
         <WeatherForm onSearch={(e) => this.handleSearch(e)}/>
         {renderMessage()}
       </div>
