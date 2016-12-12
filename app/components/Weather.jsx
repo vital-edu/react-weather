@@ -1,3 +1,4 @@
+import ErrorModal from 'ErrorModal';
 import React from 'react';
 import WeatherForm from 'WeatherForm';
 import WeatherMessage from 'WeatherMessage';
@@ -8,6 +9,7 @@ export default class Weather extends React.Component {
     super(props);
     this.state = {
       isLoading: false,
+      errorMessage: undefined,
     };
   }
 
@@ -22,16 +24,16 @@ export default class Weather extends React.Component {
         temp: temp,
         isLoading: false,
       });
-    }).catch((error) => {
-      alert(error);
+    }).catch((err) => {
       thisComponent.setState({
         isLoading: false,
+        errorMessage: err.message,
       });
     });
   }
 
   render() {
-    let {isLoading, temp, location} = this.state;
+    let {isLoading, temp, location, errorMessage} = this.state;
 
     function renderMessage() {
       if (isLoading) {
@@ -41,11 +43,20 @@ export default class Weather extends React.Component {
       }
     }
 
+    function renderError () {
+      if (typeof errorMessage === 'string') {
+        return (
+          <ErrorModal message={errorMessage}/>
+        )
+      }
+    }
+
     return (
       <div>
         <h1 className="text-center">Get Weather</h1>
         <WeatherForm onSearch={(e) => this.handleSearch(e)}/>
         {renderMessage()}
+        {renderError()}
       </div>
     )
   }

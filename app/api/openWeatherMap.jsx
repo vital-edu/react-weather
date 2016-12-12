@@ -17,8 +17,8 @@ function getTemp(location) {
     } {
       return res.data.main.temp;
     }
-  }).catch((e) => {
-    throw new Error(e.response.data.message);
+  }).catch((err) => {
+    throw new Error(err);
   });
 }
 
