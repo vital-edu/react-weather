@@ -5,7 +5,14 @@ import React from 'react';
 export default class Nav extends React.Component {
   onSearch (e) {
     e.preventDefault();
-    alert('Not yet wired up!')
+
+    let location = this.refs.search.value;
+    let encodedLocation = encodeURIComponent(location);
+
+    if (location.length > 0) {
+      this.refs.search.value = '';
+      window.location.hash = '#/?location=' + encodedLocation;
+    }
   }
 
   render () {
@@ -29,7 +36,7 @@ export default class Nav extends React.Component {
           <form onSubmit={(e) => this.onSearch(e)}>
             <ul className="menu">
               <li>
-                <input type="search" placeholder="Search weather by city"/>
+                <input ref="search" type="search" placeholder="Search weather by city"/>
               </li>
               <li>
                 <input type="submit" className="button" value="Get weather"/>
