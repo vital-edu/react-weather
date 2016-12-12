@@ -3,7 +3,7 @@ import axios from 'axios';
 const appId = process.env.OPEN_WEATHER_MAP_API_KEY;
 
 if (!appId) {
-  console.error('It is necessary to create the .env file in the root directory and set the variable OPEN_WEATHER_MAP_API_KEY');
+  console.error('It is necessary to export the environment variable OPEN_WEATHER_MAP_API_KEY');
 }
 
 const openweather_url = `http://api.openweathermap.org/data/2.5/weather?appid=${appId}&units=metric`;

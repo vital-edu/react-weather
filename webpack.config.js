@@ -1,4 +1,3 @@
-const dotenv = require('dotenv-webpack');
 const webpack = require('webpack');
 
 module.exports = {
@@ -41,14 +40,15 @@ module.exports = {
     }],
   },
   plugins: [
-    new dotenv({
-      path: './.env',
-      systemvars: true,
-    }),
     new webpack.ProvidePlugin({
       '$': 'jquery',
       'jQuery': 'jquery'
-    })
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        OPEN_WEATHER_MAP_API_KEY: JSON.stringify(process.env.OPEN_WEATHER_MAP_API_KEY),
+      },
+    }),
   ],
   devtool: 'cheap-module-eval-source-map',
 };
